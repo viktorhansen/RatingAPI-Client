@@ -1,0 +1,61 @@
+﻿
+<div ng-controller="RatingCtrl as vm">
+    <form name="ratingForm" novalidate>
+        <div class="form-group" ng-class="{'has-error':ratingForm.inputRatingName.$invalid && ratingForm.inputRatingName.$dirty}">
+
+            <div class="row col-md-4 col-xs-10 col-md-offset-4">
+                <input class="form-control"
+                       name="inputRatingName"
+                       type="text"
+                       placeholder="Add a skill..."
+                       ng-model="vm.rating.name"
+                       required
+                       ng-minlength="1"
+                       ng-maxlength="18" />
+                <span class="help-block has-error">
+                    <span ng-show="(ratingForm.inputRatingName.$dirty && ratingForm.inputRatingName.$error.required)">
+                        You have to submit a skill, right?
+                    </span>
+                    <span ng-show="ratingForm.inputRatingName.$error.maxlength">
+                        Sorry, you have to be more precise when defining your skill
+                    </span>
+                </span>
+            </div>
+
+            <div class="col-md-2">
+                <button class="btn btn-md btn-success pull-right"
+                        ng-click="vm.submit()"
+                        ng-disabled="ratingForm.$invalid">
+                    Save
+                </button>
+            </div>
+        </div>
+
+        <div class="row col-md-6 col-xs-12 col-md-offset-3">
+            <rzslider rz-slider-model="vm.slider.value" rz-slider-options="vm.slider.options"></rzslider>
+            <p>Rate how good you are at this</p>
+        </div>
+    </form>
+
+    <div class="form-group"
+         ng-show="vm.message">
+        <div class="col-md-6">
+            <p>{{vm.message}}</p>
+        </div>
+    </div>
+
+    <div class="row">
+        <table class="table table-striped">
+            <tbody>
+                <tr class="rating" ng-repeat="rating in vm.ratings">
+                    <td>{{rating.name}}</td>
+                    <td>
+                        <uib-progressbar type="success" value="rating.value" max="5" min="1">{{rating.value}}/5</uib-progressbar>
+                    </td>
+                    <td><span ng-click="vm.delete($index, rating.id)" class="glyphicon glyphicon-remove pull-right"></span></td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+
+</div>

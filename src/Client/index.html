@@ -1,0 +1,42 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <title>Ratings</title>
+    <meta charset="utf-8" />
+
+    <!--style sheets-->
+    <link href="Content/bootstrap.min.css" rel="stylesheet" />
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/angularjs-slider/2.10.2/rzslider.min.css" rel="stylesheet" />
+    <link href="Content/Style.css" rel="stylesheet" />
+</head>
+
+<body ng-app="ratingsModule">
+    <div class="jumbotron text-center">
+        <h1>My awesome rating app</h1>
+    </div>
+
+    <div class="container">
+        <div ng-include="'app/views/ratingView.html'"></div>
+    </div>
+
+    <!--library scripts-->
+    <script src="Scripts/angular.min.js"></script>
+    <script src="Scripts/angular-resource.min.js"></script>
+    <script src="Scripts/angular-animate.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/angularjs-slider/2.10.2/rzslider.min.js"></script>
+    <script src="Scripts/ui-bootstrap-tpls-2.1.3.min.js"></script>
+
+    <!--application script-->
+    <script src="app/app.js"></script>
+
+    <!--services-->
+    <script src="app/Services/common.services.js"></script>
+
+    <!--resources-->
+    <script src="common/ratingResource.js"></script>
+
+    <!--rating controllers-->
+    <script src="app/Controllers/ratingCtrl.js"></script>
+</body>
+
+</html>
